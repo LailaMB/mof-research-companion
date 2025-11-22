@@ -1,0 +1,6 @@
+[theme]
+primaryColor = "#1E7FFF"   # change to any hex you like (this replaces Streamlit orange)
+backgroundColor = "#FFFFFF"
+secondaryBackgroundColor = "#F6F7F9"
+textColor = "#0F1724"
+font = "sans serif"
