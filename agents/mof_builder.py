@@ -18,7 +18,6 @@ from itertools import product
 def rule_based_predict(metal, linker):
     """
     Return a dict of simple heuristic predictions for density, gsa, pv.
-    These numbers are illustrative and should be tuned by you.
     """
 
     topology = "pcu"

@@ -15,7 +15,6 @@ import json
 import traceback
 
 
-
 from agents.mof_finder import load_csv_if_exists, unify_columns, parse_user_request, filter_and_rank, display_table_with_pagination
 from agents.mof_analyzer import analyze_xrd_filebuffer, analyze_bet_filebuffer, analyze_xps_filebuffer, synthesize_results
 from agents.mof_builder import rule_based_predict
@@ -35,21 +34,19 @@ st.set_page_config(page_title="MOF Research Companion",
 
 
 # ----------------- CONFIG  -----------------
-GEMINI_API_KEY = ""
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 GEMINI_MODEL = "models/gemini-2.5-flash-lite"
 PAGE_SIZE = 5
 # ---------------------------------------------
 
 
 # --- Centering help: create wide center column ---
-# We'll create three columns: left spacer, main content, right spacer.
 left, main, right = st.columns([1, 6, 1])
 
 with main:
     # Header area
     col_logo, col_text = st.columns([1, 7])
     with col_logo:
-        # replace with st.image("image/logo.png") if you have a logo file
         st.image("image/logo.png" if Path("image/logo.png").exists() else "https://via.placeholder.com/88.png?text=🔬", width=150)
 
     with col_text:
@@ -58,7 +55,7 @@ with main:
 
     st.write("")  # spacing
 
-    # Native tabs - uses Streamlit's own styling
+    # Main tabs
     tab1, tab2, tab3, tab4 = st.tabs([
         "🔎 MOF Finder",
         "🧩 MOF Builder",
@@ -71,11 +68,10 @@ with main:
         # -------------------------
         # Main Streamlit UI
         # -------------------------
-        st.header("🔎 MOF Finder for H₂ storage")
+        st.header("🔎 MOF Finder for H₂ Storage")
         st.markdown("Enter your objective and constraints and the finder will search datasets for candidate MOFs.")
 
         # dataset selection
-        #st.sidebar.header("Datasets / Inputs")
         use_core = True
         use_hymarc = True
 
